@@ -2,16 +2,17 @@
 
   var methods = {
     deactivate : function( ) {      
-      var $el = $(this),
-          btnWidth = $el.data("width") ? $el.data("width") : $el.outerWidth();
-      if(methods.isDeactivated.call(this)) return true;
-      var btnContent = "<span class='btnText' style='display:none;'>"+$el.html()+"</span>";
+      	var $el = $(this),
+          	btnWidth = $el.data("width") ? $el.data("width") : $el.outerWidth();
+      	if(methods.isDeactivated.call(this)) return true;
+      	var content = ($el.find(".btnText").length) ? $el.find(".btnText").html() : $el.html(),
+      		btnContent = "<span class='btnText' style='display:none;'>"+content+"</span>";
 
       $el
         .data('width',btnWidth)
         .addClass("disabled")
         .css("width", btnWidth)
-        .html(btnContent+"<span class='loader'><img src='/assets/images/loader_btn.gif' /></span>");
+        .html(btnContent+"<span class='loader'><img src='/images/loading_white_on_black.gif' /></span>");
         
         return false;
     },
@@ -33,7 +34,7 @@
     } else if ( typeof method === 'object' || ! method ) {
       return methods.deactivate.apply( this, arguments );
     } else {
-      $.error( 'Method ' +  method + ' does not exist on jQuery.btnDeactivate' );
+      $.error( 'Method ' +  method + ' does not exist on buttonState' );
     }    
   };
 
