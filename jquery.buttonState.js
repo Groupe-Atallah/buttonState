@@ -10,19 +10,19 @@
 
       $el
         .data('width',btnWidth)
-        .addClass("disabled")
+        .addClass("loading")
         .css("width", btnWidth)
         .html(btnContent+"<span class='loader'><img src='/images/loading_white_on_black.gif' /></span>");
         
         return false;
     },
     isDeactivated : function( ) {
-      return $(this).hasClass("disabled");
+      return $(this).hasClass("loading");
     },
     activate : function( content ) {   
       var $el = $(this); 
       $el
-        .removeClass("disabled")
+        .removeClass("loading")
         .find(".loader").remove();
       $el.find(".btnText").css("display","block");
     }
